@@ -50,6 +50,69 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
             qlncc.Text = "Thêm nhà cung cấp mới";
             qlncc.ShowDialog();
             this.Show();
+            ShowNhaCungCap();
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (dgvNhaCungCap.CurrentRow != null)
+            {
+                int supplierId = Convert.ToInt32(dgvNhaCungCap.CurrentRow.Cells["Mã nhà cung cấp"].Value);
+                string name = dgvNhaCungCap.CurrentRow.Cells["Tên nhà cung cấp"].Value.ToString();
+                string address = dgvNhaCungCap.CurrentRow.Cells["Địa chỉ"].Value.ToString();
+                string phone = dgvNhaCungCap.CurrentRow.Cells["Số điện thoại"].Value.ToString();
+                string email = dgvNhaCungCap.CurrentRow.Cells["Email"].Value.ToString();
+
+                frmQLNhaCungCap frm = new frmQLNhaCungCap(supplierId, name, address, phone, email);
+                frm.Text = "Sửa thông tin nhà cung cấp";
+                frm.ShowDialog();
+                ShowNhaCungCap();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một dòng để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (dgvNhaCungCap.CurrentRow != null)
+            {
+                int supplierId = Convert.ToInt32(dgvNhaCungCap.CurrentRow.Cells["Mã nhà cung cấp"].Value);
+                string name = dgvNhaCungCap.CurrentRow.Cells["Tên nhà cung cấp"].Value.ToString();
+
+                var result = MessageBox.Show(
+                    $"Bạn có chắc chắn muốn xóa nhà cung cấp \"{name}\"?",
+                    "Xác nhận xóa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    using (SqlConnection con = new SqlConnection(strCon))
+                    {
+                        SqlCommand cmd = new SqlCommand("sp_XoaNhaCungCap", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@SupplierID", supplierId);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                    MessageBox.Show("Xóa nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowNhaCungCap();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một dòng để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void dgvNhaCungCap_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -49,11 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNguyenLieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNguyenLieu.Designer.cs">
+      <DependentUpon>frmNguyenLieu.cs</DependentUpon>
     </Compile>
     <Compile Include="frmNhaCungCap.cs">
       <SubType>Form</SubType>
@@ -61,22 +67,34 @@
     <Compile Include="frmNhaCungCap.Designer.cs">
       <DependentUpon>frmNhaCungCap.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmThemVaSuaNhapCungCap.cs">
+    <Compile Include="frmQLNguyenLieu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmThemVaSuaNhapCungCap.Designer.cs">
-      <DependentUpon>frmThemVaSuaNhapCungCap.cs</DependentUpon>
+    <Compile Include="frmQLNguyenLieu.Designer.cs">
+      <DependentUpon>frmQLNguyenLieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQLNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLNhaCungCap.Designer.cs">
+      <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNguyenLieu.resx">
+      <DependentUpon>frmNguyenLieu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNhaCungCap.resx">
       <DependentUpon>frmNhaCungCap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmThemVaSuaNhapCungCap.resx">
-      <DependentUpon>frmThemVaSuaNhapCungCap.cs</DependentUpon>
+    <EmbeddedResource Include="frmQLNguyenLieu.resx">
+      <DependentUpon>frmQLNguyenLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQLNhaCungCap.resx">
+      <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

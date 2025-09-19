@@ -34,10 +34,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtTenNhaCungCap = new System.Windows.Forms.TextBox();
+            this.txtDiaChi = new System.Windows.Forms.TextBox();
+            this.txtSDT = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnSave
@@ -49,6 +49,7 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label1
             // 
@@ -100,33 +101,33 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "Email:";
             // 
-            // textBox1
+            // txtTenNhaCungCap
             // 
-            this.textBox1.Location = new System.Drawing.Point(211, 93);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(313, 22);
-            this.textBox1.TabIndex = 6;
+            this.txtTenNhaCungCap.Location = new System.Drawing.Point(211, 93);
+            this.txtTenNhaCungCap.Name = "txtTenNhaCungCap";
+            this.txtTenNhaCungCap.Size = new System.Drawing.Size(313, 22);
+            this.txtTenNhaCungCap.TabIndex = 6;
             // 
-            // textBox2
+            // txtDiaChi
             // 
-            this.textBox2.Location = new System.Drawing.Point(211, 148);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(313, 22);
-            this.textBox2.TabIndex = 7;
+            this.txtDiaChi.Location = new System.Drawing.Point(211, 148);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(313, 22);
+            this.txtDiaChi.TabIndex = 7;
             // 
-            // textBox3
+            // txtSDT
             // 
-            this.textBox3.Location = new System.Drawing.Point(211, 200);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(313, 22);
-            this.textBox3.TabIndex = 8;
+            this.txtSDT.Location = new System.Drawing.Point(211, 200);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Size = new System.Drawing.Size(313, 22);
+            this.txtSDT.TabIndex = 8;
             // 
-            // textBox4
+            // txtEmail
             // 
-            this.textBox4.Location = new System.Drawing.Point(211, 256);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(313, 22);
-            this.textBox4.TabIndex = 9;
+            this.txtEmail.Location = new System.Drawing.Point(211, 256);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(313, 22);
+            this.txtEmail.TabIndex = 9;
             // 
             // frmQLNhaCungCap
             // 
@@ -134,10 +135,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(618, 404);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtSDT);
+            this.Controls.Add(this.txtDiaChi);
+            this.Controls.Add(this.txtTenNhaCungCap);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -147,6 +148,7 @@
             this.Name = "frmQLNhaCungCap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm hoặc sửa nhà cung cấp";
+            this.Load += new System.EventHandler(this.frmQLNhaCungCap_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,9 +162,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtTenNhaCungCap;
+        private System.Windows.Forms.TextBox txtDiaChi;
+        private System.Windows.Forms.TextBox txtSDT;
+        private System.Windows.Forms.TextBox txtEmail;
     }
 }

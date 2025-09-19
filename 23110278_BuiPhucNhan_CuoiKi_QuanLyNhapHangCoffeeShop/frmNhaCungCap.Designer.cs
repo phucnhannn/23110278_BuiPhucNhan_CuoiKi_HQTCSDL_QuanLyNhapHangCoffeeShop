@@ -42,7 +42,7 @@
             // btnQuayLai
             // 
             this.btnQuayLai.Font = new System.Drawing.Font("Calibri", 12F);
-            this.btnQuayLai.Location = new System.Drawing.Point(888, 496);
+            this.btnQuayLai.Location = new System.Drawing.Point(1024, 553);
             this.btnQuayLai.Name = "btnQuayLai";
             this.btnQuayLai.Size = new System.Drawing.Size(106, 44);
             this.btnQuayLai.TabIndex = 0;
@@ -77,8 +77,9 @@
             this.dgvNhaCungCap.ReadOnly = true;
             this.dgvNhaCungCap.RowHeadersWidth = 51;
             this.dgvNhaCungCap.RowTemplate.Height = 24;
-            this.dgvNhaCungCap.Size = new System.Drawing.Size(821, 388);
+            this.dgvNhaCungCap.Size = new System.Drawing.Size(946, 520);
             this.dgvNhaCungCap.TabIndex = 1;
+            this.dgvNhaCungCap.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhaCungCap_CellContentClick);
             // 
             // label1
             // 
@@ -93,7 +94,7 @@
             // btnThem
             // 
             this.btnThem.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Location = new System.Drawing.Point(888, 77);
+            this.btnThem.Location = new System.Drawing.Point(1024, 77);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(106, 44);
             this.btnThem.TabIndex = 3;
@@ -104,29 +105,31 @@
             // btnSua
             // 
             this.btnSua.Font = new System.Drawing.Font("Calibri", 12F);
-            this.btnSua.Location = new System.Drawing.Point(888, 150);
+            this.btnSua.Location = new System.Drawing.Point(1024, 150);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(106, 44);
             this.btnSua.TabIndex = 4;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
             this.btnXoa.Font = new System.Drawing.Font("Calibri", 12F);
-            this.btnXoa.Location = new System.Drawing.Point(888, 223);
+            this.btnXoa.Location = new System.Drawing.Point(1024, 223);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(106, 44);
             this.btnXoa.TabIndex = 5;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // frmNhaCungCap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
-            this.ClientSize = new System.Drawing.Size(1025, 562);
+            this.ClientSize = new System.Drawing.Size(1163, 633);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);

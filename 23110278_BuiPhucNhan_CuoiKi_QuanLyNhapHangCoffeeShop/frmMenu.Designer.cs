@@ -37,9 +37,9 @@
             this.btnTaoPhieuXuatKho = new System.Windows.Forms.Button();
             this.btnQLXuatKho = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.bthQuanLyNguyenLieu = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -139,6 +139,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kho hàng";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 209);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(164, 58);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Thống kê kho";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // bthQuanLyNguyenLieu
             // 
             this.bthQuanLyNguyenLieu.Location = new System.Drawing.Point(6, 42);
@@ -147,6 +156,7 @@
             this.bthQuanLyNguyenLieu.TabIndex = 9;
             this.bthQuanLyNguyenLieu.Text = "Quản lý nguyên liệu";
             this.bthQuanLyNguyenLieu.UseVisualStyleBackColor = true;
+            this.bthQuanLyNguyenLieu.Click += new System.EventHandler(this.bthQuanLyNguyenLieu_Click);
             // 
             // groupBox4
             // 
@@ -158,15 +168,6 @@
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Nguyên liệu";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 209);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(164, 58);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Thống kê kho";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmMenu
             // 
