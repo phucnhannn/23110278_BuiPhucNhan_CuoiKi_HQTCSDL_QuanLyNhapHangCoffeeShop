@@ -39,5 +39,13 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
             nguyenlieu.ShowDialog();
             this.Show();
         }
+
+        private void btnTaoPhieuNhapHang_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmPhieuNhapHang phieunhaphang = new frmPhieuNhapHang();
+            phieunhaphang.ShowDialog();
+            this.Show();
+        }
     }
 }

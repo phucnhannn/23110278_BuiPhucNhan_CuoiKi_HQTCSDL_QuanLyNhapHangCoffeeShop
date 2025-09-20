@@ -90,18 +90,42 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
 
                 if (result == DialogResult.Yes)
                 {
-                    using (SqlConnection con = new SqlConnection(strCon))
+                    try
                     {
-                        SqlCommand cmd = new SqlCommand("sp_XoaNhaCungCap", con);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@SupplierID", supplierId);
+                        using (SqlConnection con = new SqlConnection(strCon))
+                        {
+                            SqlCommand cmd = new SqlCommand("sp_XoaNhaCungCap", con);
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@SupplierID", supplierId);
 
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                        con.Close();
+                            con.Open();
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+                        }
+                        MessageBox.Show("Xóa nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ShowNhaCungCap();
                     }
-                    MessageBox.Show("Xóa nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ShowNhaCungCap();
+                    catch (SqlException ex)
+                    {
+                        if (ex.Number == 547)
+                        {
+                            MessageBox.Show(
+                                "Không thể xóa nhà cung cấp này vì đang được sử dụng trong đơn đặt hàng!",
+                                "Lỗi",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error
+                            );
+                        }
+                        else
+                        {
+                            MessageBox.Show(
+                                "Có lỗi xảy ra: " + ex.Message,
+                                "Lỗi",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error
+                            );
+                        }
+                    }
                 }
             }
             else
@@ -113,6 +137,28 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
         private void dgvNhaCungCap_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            ShowNhaCungCap();
+            MessageBox.Show("Đã làm mới dữ liệu nhà cung cấp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            string tenNhaCungCap = txtTimKiem.Text.Trim();
+            using (SqlConnection con = new SqlConnection(strCon))
+            {
+                string query = "SELECT * FROM dbo.fn_TimKiemNhaCungCap(@TenNhaCungCap)";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@TenNhaCungCap", tenNhaCungCap);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgvNhaCungCap.DataSource = dt;
+            }
         }
     }
 }

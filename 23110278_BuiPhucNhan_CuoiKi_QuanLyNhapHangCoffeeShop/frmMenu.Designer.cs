@@ -75,6 +75,7 @@
             this.btnTaoPhieuNhapHang.TabIndex = 2;
             this.btnTaoPhieuNhapHang.Text = "Tạo phiếu nhập hàng";
             this.btnTaoPhieuNhapHang.UseVisualStyleBackColor = true;
+            this.btnTaoPhieuNhapHang.Click += new System.EventHandler(this.btnTaoPhieuNhapHang_Click);
             // 
             // btnQLNhapHang
             // 
