@@ -85,6 +85,7 @@
             this.btnQLNhapHang.TabIndex = 3;
             this.btnQLNhapHang.Text = "Quản lý nhập hàng";
             this.btnQLNhapHang.UseVisualStyleBackColor = true;
+            this.btnQLNhapHang.Click += new System.EventHandler(this.btnQLNhapHang_Click);
             // 
             // groupBox1
             // 
