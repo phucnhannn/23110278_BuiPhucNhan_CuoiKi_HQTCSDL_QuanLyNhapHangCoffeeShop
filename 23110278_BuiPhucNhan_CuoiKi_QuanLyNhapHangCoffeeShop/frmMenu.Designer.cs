@@ -37,7 +37,7 @@
             this.btnTaoPhieuXuatKho = new System.Windows.Forms.Button();
             this.btnQLXuatKho = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnThongKeKho = new System.Windows.Forms.Button();
             this.bthQuanLyNguyenLieu = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
@@ -132,7 +132,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.btnThongKeKho);
             this.groupBox3.Controls.Add(this.btnTaoPhieuXuatKho);
             this.groupBox3.Controls.Add(this.btnQLXuatKho);
             this.groupBox3.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -143,14 +143,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kho hàng";
             // 
-            // button1
+            // btnThongKeKho
             // 
-            this.button1.Location = new System.Drawing.Point(6, 209);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(164, 58);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Thống kê kho";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnThongKeKho.Location = new System.Drawing.Point(6, 209);
+            this.btnThongKeKho.Name = "btnThongKeKho";
+            this.btnThongKeKho.Size = new System.Drawing.Size(164, 58);
+            this.btnThongKeKho.TabIndex = 8;
+            this.btnThongKeKho.Text = "Thống kê kho";
+            this.btnThongKeKho.UseVisualStyleBackColor = true;
+            this.btnThongKeKho.Click += new System.EventHandler(this.btnThongKeKho_Click_1);
             // 
             // bthQuanLyNguyenLieu
             // 
@@ -209,7 +210,7 @@
         private System.Windows.Forms.Button btnQLXuatKho;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button bthQuanLyNguyenLieu;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnThongKeKho;
         private System.Windows.Forms.GroupBox groupBox4;
     }
 }

@@ -58,14 +58,14 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
             return -1;
         }
 
-        private int GetFirstAvailableLotID(int materialID, int quantity, SqlConnection conn)
+        private bool CheckTonKho(int materialID, int soLuongCanXuat, SqlConnection conn)
         {
-            using (SqlCommand cmd = new SqlCommand("SELECT TOP 1 LotID FROM InventoryLot WHERE MaterialID = @MaterialID AND RemainingQuantity >= @Quantity ORDER BY ExpiryDate", conn))
+            using (SqlCommand cmd = new SqlCommand("SELECT dbo.fn_KiemTraTonKho(@MaterialID, @SoLuongCanXuat)", conn))
             {
                 cmd.Parameters.AddWithValue("@MaterialID", materialID);
-                cmd.Parameters.AddWithValue("@Quantity", quantity);
+                cmd.Parameters.AddWithValue("@SoLuongCanXuat", soLuongCanXuat);
                 object result = cmd.ExecuteScalar();
-                return result != null ? Convert.ToInt32(result) : -1;
+                return Convert.ToBoolean(result);
             }
         }
 
@@ -93,19 +93,7 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
             dgvXuatKho.Rows.Add(tenNguyenLieu, soLuong);
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (dgvXuatKho.SelectedRows.Count > 0)
-            {
-                dgvXuatKho.Rows.RemoveAt(dgvXuatKho.SelectedRows[0].Index);
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn một dòng để xóa.");
-            }
-        }
-
-        private void btnXacNhan_Click(object sender, EventArgs e)
+        private void btnXacNhan_Click_1(object sender, EventArgs e)
         {
             if (dgvXuatKho.Rows.Count <= 1)
             {
@@ -116,51 +104,101 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
             string lyDo = txtLyDoXuatKho.Text;
             DateTime exportDate = DateTime.Now;
             int exportVoucherID;
+            bool xuatThanhCong = false;
+            string canhBao = "";
 
-            using (SqlConnection conn = new SqlConnection(strCon))
+            try
             {
-                conn.Open();
-                // 1. Thêm phiếu xuất kho
-                using (SqlCommand cmd = new SqlCommand("sp_ThemPhieuXuatKho", conn))
+                using (SqlConnection conn = new SqlConnection(strCon))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ExportDate", exportDate);
-                    cmd.Parameters.AddWithValue("@Reason", lyDo);
-                    exportVoucherID = Convert.ToInt32(cmd.ExecuteScalar());
-                }
-
-                // 2. Thêm từng chi tiết phiếu xuất kho
-                foreach (DataGridViewRow row in dgvXuatKho.Rows)
-                {
-                    if (row.IsNewRow) continue;
-
-                    string materialName = row.Cells[0].Value.ToString();
-                    int materialID = GetMaterialIDByName(materialName);
-                    int quantity = Convert.ToInt32(row.Cells[1].Value);
-
-                    // Lấy LotID còn tồn kho (ví dụ lấy lô đầu tiên còn hàng)
-                    int lotID = GetFirstAvailableLotID(materialID, quantity, conn);
-                    if (lotID == -1)
+                    conn.Open();
+                    foreach (DataGridViewRow row in dgvXuatKho.Rows)
                     {
-                        MessageBox.Show($"Không đủ tồn kho cho nguyên liệu {materialName}");
-                        continue;
+                        if (row.IsNewRow) continue;
+
+                        string materialName = row.Cells[0].Value.ToString();
+                        int materialID = GetMaterialIDByName(materialName);
+                        int quantity = Convert.ToInt32(row.Cells[1].Value);
+
+                        if (!CheckTonKho(materialID, quantity, conn))
+                        {
+                            MessageBox.Show($"Không đủ tồn kho cho nguyên liệu {materialName}. Cần {quantity}");
+                            conn.Close();
+                            return;
+                        }
                     }
 
-                    using (SqlCommand cmd = new SqlCommand("sp_ThemChiTietPhieuXuatKho", conn))
+                    using (SqlCommand cmd = new SqlCommand("sp_ThemPhieuXuatKho", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@ExportVoucherID", exportVoucherID);
-                        cmd.Parameters.AddWithValue("@MaterialID", materialID);
-                        cmd.Parameters.AddWithValue("@LotID", lotID);
-                        cmd.Parameters.AddWithValue("@Quantity", quantity);
-                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@ExportDate", exportDate);
+                        cmd.Parameters.AddWithValue("@Reason", lyDo);
+                        exportVoucherID = Convert.ToInt32(cmd.ExecuteScalar());
                     }
-                }
-                conn.Close();
-            }
+                    foreach (DataGridViewRow row in dgvXuatKho.Rows)
+                    {
+                        if (row.IsNewRow) continue;
 
-            MessageBox.Show("Xuất kho thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            dgvXuatKho.Rows.Clear();
+                        string materialName = row.Cells[0].Value.ToString();
+                        int materialID = GetMaterialIDByName(materialName);
+                        int quantity = Convert.ToInt32(row.Cells[1].Value);
+
+                        try
+                        {
+                            using (SqlCommand cmd = new SqlCommand("sp_ThemChiTietPhieuXuatKho", conn))
+                            {
+                                cmd.CommandType = CommandType.StoredProcedure;
+                                cmd.Parameters.AddWithValue("@ExportVoucherID", exportVoucherID);
+                                cmd.Parameters.AddWithValue("@MaterialID", materialID);
+                                cmd.Parameters.AddWithValue("@LotID", 0);
+                                cmd.Parameters.AddWithValue("@Quantity", quantity);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        catch (SqlException ex_inner)
+                        {
+                            if (ex_inner.Number == 50000) 
+                            {
+                                canhBao = ex_inner.Message;
+                            }
+                            else
+                            {
+                                throw;
+                            }
+                        }
+                    }
+                    xuatThanhCong = true;
+                    conn.Close();
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (xuatThanhCong)
+            {
+                MessageBox.Show("Xuất kho thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (!string.IsNullOrEmpty(canhBao))
+                {
+                    MessageBox.Show(canhBao, "Cảnh báo tồn kho", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                dgvXuatKho.Rows.Clear();
+            }
+        }
+
+        private void btnXoa_Click_1(object sender, EventArgs e)
+        {
+            if (dgvXuatKho.SelectedRows.Count > 0)
+            {
+                dgvXuatKho.Rows.RemoveAt(dgvXuatKho.SelectedRows[0].Index);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một dòng để xóa.");
+            }
         }
     }
 }

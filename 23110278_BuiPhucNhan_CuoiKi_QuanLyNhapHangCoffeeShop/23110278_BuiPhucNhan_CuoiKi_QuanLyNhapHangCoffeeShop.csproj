@@ -79,6 +79,12 @@
     <Compile Include="frmPhieuXuatKho.Designer.cs">
       <DependentUpon>frmPhieuXuatKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmQLKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLKho.Designer.cs">
+      <DependentUpon>frmQLKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQLNguyenLieu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPhieuXuatKho.resx">
       <DependentUpon>frmPhieuXuatKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQLKho.resx">
+      <DependentUpon>frmQLKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQLNguyenLieu.resx">
       <DependentUpon>frmQLNguyenLieu.cs</DependentUpon>
