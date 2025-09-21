@@ -70,6 +70,7 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
                 dgvNhapHang.Columns.Add("MaterialName", "Tên nguyên liệu");
                 dgvNhapHang.Columns.Add("Quantity", "Số lượng");
                 dgvNhapHang.Columns.Add("UnitPrice", "Giá (trên 1 đơn vị)");
+                dgvNhapHang.Columns.Add("ExpiryDate", "Hạn sử dụng");
             }
         }
 
@@ -91,7 +92,8 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
                 return;
             }
             string tenNguyenLieu = cbNguyenLieu.Text;
-            dgvNhapHang.Rows.Add(tenNguyenLieu, soLuong, gia);
+            DateTime expiryDate = dtpHanSuDung.Value.Date;
+            dgvNhapHang.Rows.Add(tenNguyenLieu, soLuong, gia, expiryDate.ToString("yyyy-MM-dd"));
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -153,6 +155,7 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
                     int materialID = GetMaterialIDByName(materialName);
                     int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
                     decimal unitPrice = Convert.ToDecimal(row.Cells["UnitPrice"].Value);
+                    DateTime expiryDate = DateTime.Parse(row.Cells["ExpiryDate"].Value.ToString());
 
                     using (SqlCommand cmd = new SqlCommand("sp_ThemChiTietPhieuNhapHang", conn))
                     {
@@ -161,6 +164,7 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
                         cmd.Parameters.AddWithValue("@MaterialID", materialID);
                         cmd.Parameters.AddWithValue("@Quantity", quantity);
                         cmd.Parameters.AddWithValue("@UnitPrice", unitPrice);
+                        cmd.Parameters.AddWithValue("@ExpiryDate", expiryDate);
                         cmd.ExecuteNonQuery();
                     }
                 }

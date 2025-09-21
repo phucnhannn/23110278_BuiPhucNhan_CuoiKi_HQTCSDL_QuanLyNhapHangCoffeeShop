@@ -96,5 +96,31 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
                 MessageBoxIcon.Information
             );
         }
+
+        private void btnTraCuu_Click(object sender, EventArgs e)
+        {
+            DateTime ngayBatDau = dtpNgayBatDau.Value.Date;
+            DateTime ngayKetThuc = dtpNgayKetThuc.Value.Date;
+
+            if (ngayBatDau > ngayKetThuc)
+            {
+                MessageBox.Show("Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc.", "Cảnh báo", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SqlConnection conn = new SqlConnection(strCon))
+            {
+                string query = "SELECT * FROM fn_TraCuuPhieuNhapHangTheoNgay(@NgayBatDau, @NgayKetThuc)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@NgayBatDau", ngayBatDau);
+                    cmd.Parameters.AddWithValue("@NgayKetThuc", ngayKetThuc);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dgvQLNhapHang.DataSource = dt;
+                }
+            }
+        }
     }
 }

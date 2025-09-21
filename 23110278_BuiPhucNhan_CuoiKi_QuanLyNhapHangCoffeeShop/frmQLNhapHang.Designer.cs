@@ -41,6 +41,7 @@
             this.btnTinhToan = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLamMoi = new System.Windows.Forms.Button();
+            this.btnTraCuu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQLNhapHang)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -105,23 +106,23 @@
             // 
             // dtpNgayBatDau
             // 
-            this.dtpNgayBatDau.Location = new System.Drawing.Point(311, 31);
+            this.dtpNgayBatDau.Location = new System.Drawing.Point(255, 31);
             this.dtpNgayBatDau.Name = "dtpNgayBatDau";
-            this.dtpNgayBatDau.Size = new System.Drawing.Size(200, 28);
+            this.dtpNgayBatDau.Size = new System.Drawing.Size(253, 28);
             this.dtpNgayBatDau.TabIndex = 19;
             // 
             // dtpNgayKetThuc
             // 
-            this.dtpNgayKetThuc.Location = new System.Drawing.Point(311, 77);
+            this.dtpNgayKetThuc.Location = new System.Drawing.Point(255, 77);
             this.dtpNgayKetThuc.Name = "dtpNgayKetThuc";
-            this.dtpNgayKetThuc.Size = new System.Drawing.Size(200, 28);
+            this.dtpNgayKetThuc.Size = new System.Drawing.Size(253, 28);
             this.dtpNgayKetThuc.TabIndex = 20;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(132, 29);
+            this.label1.Location = new System.Drawing.Point(76, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(173, 24);
             this.label1.TabIndex = 21;
@@ -132,7 +133,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(132, 77);
+            this.label3.Location = new System.Drawing.Point(74, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(175, 24);
             this.label3.TabIndex = 22;
@@ -141,7 +142,7 @@
             // btnTinhToan
             // 
             this.btnTinhToan.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTinhToan.Location = new System.Drawing.Point(527, 42);
+            this.btnTinhToan.Location = new System.Drawing.Point(638, 40);
             this.btnTinhToan.Name = "btnTinhToan";
             this.btnTinhToan.Size = new System.Drawing.Size(106, 48);
             this.btnTinhToan.TabIndex = 23;
@@ -151,18 +152,19 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnTraCuu);
             this.groupBox1.Controls.Add(this.dtpNgayBatDau);
             this.groupBox1.Controls.Add(this.btnTinhToan);
             this.groupBox1.Controls.Add(this.dtpNgayKetThuc);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Calibri Light", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(206, 70);
+            this.groupBox1.Location = new System.Drawing.Point(206, 79);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(676, 118);
+            this.groupBox1.Size = new System.Drawing.Size(751, 118);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "TÍnh tổng tiền nhập hàng theo thời gian:";
+            this.groupBox1.Text = "Tra cứu các đơn nhập hàng và tính tổng tiền nhập hàng theo ngày:";
             // 
             // btnLamMoi
             // 
@@ -174,6 +176,17 @@
             this.btnLamMoi.Text = "Làm mới dữ liệu nhập hàng";
             this.btnLamMoi.UseVisualStyleBackColor = true;
             this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click_1);
+            // 
+            // btnTraCuu
+            // 
+            this.btnTraCuu.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTraCuu.Location = new System.Drawing.Point(526, 40);
+            this.btnTraCuu.Name = "btnTraCuu";
+            this.btnTraCuu.Size = new System.Drawing.Size(106, 48);
+            this.btnTraCuu.TabIndex = 24;
+            this.btnTraCuu.Text = "Tra cứu";
+            this.btnTraCuu.UseVisualStyleBackColor = true;
+            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // frmQLNhapHang
             // 
@@ -211,5 +224,6 @@
         private System.Windows.Forms.Button btnTinhToan;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnLamMoi;
+        private System.Windows.Forms.Button btnTraCuu;
     }
 }

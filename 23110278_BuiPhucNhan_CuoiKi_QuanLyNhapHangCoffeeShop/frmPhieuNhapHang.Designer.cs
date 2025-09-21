@@ -43,6 +43,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnXoa = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dtpHanSuDung = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhapHang)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +52,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(176, 143);
+            this.label1.Location = new System.Drawing.Point(169, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(161, 24);
             this.label1.TabIndex = 0;
@@ -60,7 +62,7 @@
             // 
             this.cbNguyenLieu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbNguyenLieu.FormattingEnabled = true;
-            this.cbNguyenLieu.Location = new System.Drawing.Point(430, 143);
+            this.cbNguyenLieu.Location = new System.Drawing.Point(416, 105);
             this.cbNguyenLieu.Name = "cbNguyenLieu";
             this.cbNguyenLieu.Size = new System.Drawing.Size(275, 24);
             this.cbNguyenLieu.TabIndex = 1;
@@ -79,7 +81,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 12F);
-            this.label3.Location = new System.Drawing.Point(113, 64);
+            this.label3.Location = new System.Drawing.Point(110, 53);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(352, 24);
             this.label3.TabIndex = 3;
@@ -89,7 +91,7 @@
             // 
             this.cbNhaCungCap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbNhaCungCap.FormattingEnabled = true;
-            this.cbNhaCungCap.Location = new System.Drawing.Point(483, 67);
+            this.cbNhaCungCap.Location = new System.Drawing.Point(480, 56);
             this.cbNhaCungCap.Name = "cbNhaCungCap";
             this.cbNhaCungCap.Size = new System.Drawing.Size(387, 24);
             this.cbNhaCungCap.TabIndex = 4;
@@ -98,7 +100,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 12F);
-            this.label4.Location = new System.Drawing.Point(176, 182);
+            this.label4.Location = new System.Drawing.Point(169, 143);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(138, 24);
             this.label4.TabIndex = 5;
@@ -106,7 +108,7 @@
             // 
             // txtSoLuong
             // 
-            this.txtSoLuong.Location = new System.Drawing.Point(430, 184);
+            this.txtSoLuong.Location = new System.Drawing.Point(416, 143);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(275, 22);
             this.txtSoLuong.TabIndex = 6;
@@ -115,7 +117,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 12F);
-            this.label5.Location = new System.Drawing.Point(176, 225);
+            this.label5.Location = new System.Drawing.Point(169, 180);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(214, 24);
             this.label5.TabIndex = 7;
@@ -123,7 +125,7 @@
             // 
             // txtGia
             // 
-            this.txtGia.Location = new System.Drawing.Point(430, 228);
+            this.txtGia.Location = new System.Drawing.Point(416, 183);
             this.txtGia.Name = "txtGia";
             this.txtGia.Size = new System.Drawing.Size(275, 22);
             this.txtGia.TabIndex = 8;
@@ -131,7 +133,7 @@
             // btnThem
             // 
             this.btnThem.Font = new System.Drawing.Font("Calibri", 12F);
-            this.btnThem.Location = new System.Drawing.Point(730, 161);
+            this.btnThem.Location = new System.Drawing.Point(711, 138);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(119, 67);
             this.btnThem.TabIndex = 9;
@@ -192,12 +194,31 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "(xóa khi thêm nhầm 1 dòng vào bảng)";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(169, 219);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(168, 24);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Chọn hạn sử dụng:";
+            // 
+            // dtpHanSuDung
+            // 
+            this.dtpHanSuDung.Location = new System.Drawing.Point(416, 220);
+            this.dtpHanSuDung.Name = "dtpHanSuDung";
+            this.dtpHanSuDung.Size = new System.Drawing.Size(275, 22);
+            this.dtpHanSuDung.TabIndex = 16;
+            // 
             // frmPhieuNhapHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1001, 718);
+            this.Controls.Add(this.dtpHanSuDung);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.label6);
@@ -240,5 +261,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DateTimePicker dtpHanSuDung;
     }
 }

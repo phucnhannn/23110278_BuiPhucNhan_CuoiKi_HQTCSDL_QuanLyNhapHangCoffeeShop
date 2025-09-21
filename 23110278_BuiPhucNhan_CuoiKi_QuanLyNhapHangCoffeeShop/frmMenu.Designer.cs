@@ -118,6 +118,7 @@
             this.btnTaoPhieuXuatKho.TabIndex = 6;
             this.btnTaoPhieuXuatKho.Text = "Tạo phiếu xuất kho";
             this.btnTaoPhieuXuatKho.UseVisualStyleBackColor = true;
+            this.btnTaoPhieuXuatKho.Click += new System.EventHandler(this.btnTaoPhieuXuatKho_Click);
             // 
             // btnQLXuatKho
             // 
@@ -127,6 +128,7 @@
             this.btnQLXuatKho.TabIndex = 7;
             this.btnQLXuatKho.Text = "Quản lý xuất kho";
             this.btnQLXuatKho.UseVisualStyleBackColor = true;
+            this.btnQLXuatKho.Click += new System.EventHandler(this.btnQLXuatKho_Click);
             // 
             // groupBox3
             // 

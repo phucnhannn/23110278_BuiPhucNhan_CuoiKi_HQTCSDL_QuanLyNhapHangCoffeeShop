@@ -55,5 +55,22 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
             qlnhaphang.ShowDialog();
             this.Show();
         }
+
+        private void btnQLXuatKho_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmQLXuatKho qlxuatkho = new frmQLXuatKho();
+            qlxuatkho.ShowDialog();
+            this.Show();
+
+        }
+
+        private void btnTaoPhieuXuatKho_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmPhieuXuatKho phieuxuatkho = new frmPhieuXuatKho();
+            phieuxuatkho.ShowDialog();
+            this.Show();
+        }
     }
 }
