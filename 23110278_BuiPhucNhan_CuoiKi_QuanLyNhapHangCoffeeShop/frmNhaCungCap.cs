@@ -13,10 +13,11 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
 {
     public partial class frmNhaCungCap : Form
     {
-        string strCon = @"Data Source=JOHNNYBUIII;Initial Catalog=QuanLyNhapHang;User ID=sa;Password=1;TrustServerCertificate=True";
-        public frmNhaCungCap()
+        string strCon;
+        public frmNhaCungCap(string strCon)
         {
             InitializeComponent();
+            this.strCon = strCon;
             ShowNhaCungCap();
         }
 
@@ -46,7 +47,7 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
         private void btnThem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmQLNhaCungCap qlncc = new frmQLNhaCungCap();
+            frmQLNhaCungCap qlncc = new frmQLNhaCungCap(strCon);
             qlncc.Text = "Thêm nhà cung cấp mới";
             qlncc.ShowDialog();
             this.Show();
@@ -63,7 +64,7 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
                 string phone = dgvNhaCungCap.CurrentRow.Cells["Số điện thoại"].Value.ToString();
                 string email = dgvNhaCungCap.CurrentRow.Cells["Email"].Value.ToString();
 
-                frmQLNhaCungCap frm = new frmQLNhaCungCap(supplierId, name, address, phone, email);
+                frmQLNhaCungCap frm = new frmQLNhaCungCap(supplierId, name, address, phone, email, strCon);
                 frm.Text = "Sửa thông tin nhà cung cấp";
                 frm.ShowDialog();
                 ShowNhaCungCap();

@@ -14,12 +14,13 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
     public partial class frmQLNhaCungCap : Form
     {
         private int supplierId = -1;
-        string strCon = @"Data Source=JOHNNYBUIII;Initial Catalog=QuanLyNhapHang;User ID=sa;Password=1;TrustServerCertificate=True";
-        public frmQLNhaCungCap()
+        string strCon;
+        public frmQLNhaCungCap(string strCon)
         {
             InitializeComponent();
+            this.strCon = strCon;
         }
-        public frmQLNhaCungCap(int id, string name, string address, string phone, string email)
+        public frmQLNhaCungCap(int id, string name, string address, string phone, string email, string strCon)
         {
             InitializeComponent();
             supplierId = id;
@@ -27,6 +28,7 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
             txtDiaChi.Text = address;
             txtSDT.Text = phone;
             txtEmail.Text = email;
+            this.strCon = strCon;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

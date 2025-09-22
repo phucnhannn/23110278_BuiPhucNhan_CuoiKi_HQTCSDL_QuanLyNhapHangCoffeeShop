@@ -13,7 +13,7 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
 {
     public partial class frmQLNhapHang : Form
     {
-        string strCon = @"Data Source=JOHNNYBUIII;Initial Catalog=QuanLyNhapHang;User ID=sa;Password=1;TrustServerCertificate=True";
+        string strCon;
         private void LoadNhapHang()
         {
             using (SqlConnection con = new SqlConnection(strCon))
@@ -25,9 +25,10 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
                 dgvQLNhapHang.DataSource = dt;
             }
         }
-        public frmQLNhapHang()
+        public frmQLNhapHang(string strCon)
         {
             InitializeComponent();
+            this.strCon = strCon;
             LoadNhapHang();
         }
 

@@ -13,10 +13,11 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
 {
     public partial class frmNguyenLieu : Form
     {
-        string strCon = @"Data Source=JOHNNYBUIII;Initial Catalog=QuanLyNhapHang;User ID=sa;Password=1;TrustServerCertificate=True";
-        public frmNguyenLieu()
+        string strCon;
+        public frmNguyenLieu(string strCon)
         {
             InitializeComponent();
+            this.strCon = strCon;
             ShowNguyenLieu();
         }
 
@@ -44,7 +45,7 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            frmQLNguyenLieu frm = new frmQLNguyenLieu();
+            frmQLNguyenLieu frm = new frmQLNguyenLieu(strCon);
             frm.Text = "Thêm nguyên liệu mới";
             frm.ShowDialog();
             ShowNguyenLieu();

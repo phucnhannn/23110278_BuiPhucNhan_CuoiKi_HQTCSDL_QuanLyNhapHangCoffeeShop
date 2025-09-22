@@ -13,10 +13,11 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
 {
     public partial class frmQLKho : Form
     {
-        string strCon = @"Data Source=JOHNNYBUIII;Initial Catalog=QuanLyNhapHang;User ID=sa;Password=1;TrustServerCertificate=True";
-        public frmQLKho()
+        string strCon;
+        public frmQLKho(string strCon)
         {
             InitializeComponent();
+            this.strCon = strCon;
         }
 
         private void frmQLKho_Load(object sender, EventArgs e)

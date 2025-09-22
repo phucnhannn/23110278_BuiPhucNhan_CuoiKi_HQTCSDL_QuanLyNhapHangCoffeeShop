@@ -13,9 +13,10 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
 {
     public partial class frmPhieuXuatKho : Form
     {
-        string strCon = @"Data Source=JOHNNYBUIII;Initial Catalog=QuanLyNhapHang;User ID=sa;Password=1;TrustServerCertificate=True";
-        public frmPhieuXuatKho()
+        string strCon;
+        public frmPhieuXuatKho(string strCon)
         {
+            this.strCon = strCon;
             InitializeComponent();
             LoadNguyenLieu();
         }
