@@ -10,8 +10,8 @@ CREATE ROLE role_nvk;
 GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.PurchaseOrder TO role_nvnh;
 GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.PurchaseOrderDetail TO role_nvnh;
 GRANT SELECT, INSERT, UPDATE, DELETE ON dbo.Supplier TO role_nvnh;
-GRANT SELECT ON dbo.view_QuanLyNhapHang TO role_nvnh;
 GRANT SELECT ON dbo.Material TO role_nvnh;
+GRANT SELECT ON dbo.view_QuanLyNhapHang TO role_nvnh;
 
 GRANT EXECUTE ON dbo.sp_ShowNguyenLieu TO role_nvnh;
 GRANT EXECUTE ON dbo.sp_ShowNhaCungCap TO role_nvnh;
@@ -51,7 +51,6 @@ GRANT SELECT ON dbo.fn_TraCuuPhieuXuatKhoTheoNgay TO role_nvk;
 GRANT SELECT ON dbo.fn_TimKiemPhieuXuatKhoTheoMa TO role_nvk;
 
 GRANT EXECUTE ON dbo.fn_KiemTraTonKho TO role_nvk;
-GRANT EXECUTE ON dbo.fn_TongTienNhapHangTheoNgay TO role_nvk;
 
 ALTER ROLE role_nvnh ADD MEMBER nvnh;
 ALTER ROLE role_nvk ADD MEMBER nvk;

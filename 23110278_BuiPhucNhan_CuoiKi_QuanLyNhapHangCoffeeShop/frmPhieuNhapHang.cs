@@ -136,7 +136,6 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
             using (SqlConnection conn = new SqlConnection(strCon))
             {
                 conn.Open();
-                // 1. Thêm phiếu nhập hàng, lấy PurchaseOrderID mới
                 using (SqlCommand cmd = new SqlCommand("sp_ThemPhieuNhapHang", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -146,8 +145,6 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
 
                     purchaseOrderID = Convert.ToInt32(cmd.ExecuteScalar());
                 }
-
-                // 2. Thêm từng chi tiết phiếu nhập hàng
                 foreach (DataGridViewRow row in dgvNhapHang.Rows)
                 {
                     if (row.IsNewRow) continue;
