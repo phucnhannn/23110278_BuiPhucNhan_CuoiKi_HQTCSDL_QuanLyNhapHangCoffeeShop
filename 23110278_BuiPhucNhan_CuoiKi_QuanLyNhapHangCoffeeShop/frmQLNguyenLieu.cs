@@ -20,13 +20,14 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
             InitializeComponent();
             this.strCon = strCon;
         }
-        public frmQLNguyenLieu(int id, string name, string unit, int reorderLevel)
+        public frmQLNguyenLieu(int id, string name, string unit, int reorderLevel, string strCon)
         {
             InitializeComponent();
             materialId = id;
             txtTenNguyenLieu.Text = name;
             txtDonViTinh.Text = unit;
             txtLuongTonToiThieu.Text = reorderLevel.ToString();
+            this.strCon = strCon;
         }
 
         private void frmQLNguyenLieu_Load(object sender, EventArgs e)

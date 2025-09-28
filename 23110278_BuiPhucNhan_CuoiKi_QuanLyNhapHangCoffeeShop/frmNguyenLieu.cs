@@ -62,7 +62,7 @@ namespace _23110278_BuiPhucNhan_CuoiKi_QuanLyNhapHangCoffeeShop
                     ? Convert.ToInt32(dgvNguyenLieu.CurrentRow.Cells["Lượng tồn tối thiểu"].Value)
                     : 0;
 
-                frmQLNguyenLieu frm = new frmQLNguyenLieu(materialId, name, unit, reorderLevel);
+                frmQLNguyenLieu frm = new frmQLNguyenLieu(materialId, name, unit, reorderLevel, strCon);
                 frm.Text = "Sửa thông tin nguyên liệu";
                 frm.ShowDialog();
                 ShowNguyenLieu();
